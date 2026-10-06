@@ -1,0 +1,25 @@
+{
+  "name": "profile-skills",
+  "displayName": "Profile Skills",
+  "description": "Measured performance engineering for agentic development: profile Python, JavaScript/TypeScript (Node and Bun), browser and Bash code to find real hotspots; decide 'faster or not' with one interleaved, paired, confidence-interval rule; optimize in a recursive loop that keeps a change only if it is significant and the tests stay green; and gate regressions in CI on the R1-R5 rigor profiles shared with test-skills.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Opum AI",
+    "url": "https://github.com/opum-ai"
+  },
+  "homepage": "https://github.com/opum-ai/profile-skills",
+  "repository": "https://github.com/opum-ai/profile-skills",
+  "license": "MIT",
+  "keywords": [
+    "performance",
+    "profiling",
+    "benchmarking",
+    "optimization",
+    "flamegraph",
+    "regression-testing",
+    "ci",
+    "python",
+    "typescript",
+    "web-vitals"
+  ]
+}

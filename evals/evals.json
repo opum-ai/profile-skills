@@ -1,0 +1,116 @@
+{
+  "skill_name": "profile-skills",
+  "evals": [
+    {
+      "id": 1,
+      "name": "py-report-optimize",
+      "fixture": "py-report",
+      "expected_skill": "perf-optimize",
+      "prompt": "The nightly report job in this repo (`python -m reportgen data/events.csv`) has gotten painfully slow as our event volume grew. Production files are ~250k rows now and will double next quarter, and the job runs in a container with a 256 MB memory limit. Make it fast and keep it inside that limit. The output has to stay byte-for-byte identical; the importer downstream is picky.",
+      "expected_output": "Profile-guided fixes to dedupe (O(n^2) list membership), per-row JSON re-read in enrich, and per-region user list membership; order-preserving; byte-identical output on hidden inputs; >=20x faster at 60k rows; measured with interleaved runs and evidence.",
+      "assertions": {
+        "outcome": [
+          "correct_on_hidden_inputs",
+          "tests_green_before_and_after",
+          "tests_not_weakened",
+          "faster_than_original_on_hidden_workload",
+          "within_2x_of_expert_at_2x_volume",
+          "meets_stated_constraints"
+        ],
+        "process": [
+          "claimed_speedup_reproduced",
+          "profiler_artefact_present",
+          "no_change_kept_without_measurement"
+        ]
+      },
+      "round": 1,
+      "grader": "evals/grade.py (objective; proven both ways by evals/selftest)",
+      "fixture_version": 2,
+      "scoring": "Headline = outcome assertions (independent of how the agent worked). Process assertions reported separately; they never decide the comparison alone."
+    },
+    {
+      "id": 2,
+      "name": "ts-resolver-optimize",
+      "fixture": "ts-resolver",
+      "expected_skill": "perf-optimize",
+      "prompt": "`node src/cli.ts fixtures/big.json` is way too slow on big workspaces: it burns CPU for a while and then seems to just sit there. Figure out where the time goes and speed it up. It runs on Node in CI and on Bun on our dev machines, so both matter. The output can't change at all; the deploy tooling diffs it.",
+      "expected_output": "Identifies both the quadratic installOrder (clone + filter + includes per step) and the sequential awaits of fetchManifest; fixes with an indexed Kahn's algorithm keeping alphabetical tie-break, Map lookups, bounded-concurrency manifest fetches preserving output order; identical output; large speedup.",
+      "assertions": {
+        "outcome": [
+          "correct_on_hidden_inputs",
+          "tests_green_before_and_after",
+          "tests_not_weakened",
+          "faster_than_original_on_hidden_workload",
+          "within_2x_of_expert_at_2x_volume",
+          "meets_stated_constraints"
+        ],
+        "process": [
+          "claimed_speedup_reproduced",
+          "profiler_artefact_present",
+          "no_change_kept_without_measurement"
+        ]
+      },
+      "round": 1,
+      "grader": "evals/grade.py (objective; proven both ways by evals/selftest)",
+      "fixture_version": 2,
+      "scoring": "Headline = outcome assertions (independent of how the agent worked). Process assertions reported separately; they never decide the comparison alone."
+    },
+    {
+      "id": 3,
+      "name": "bash-logs-optimize",
+      "fixture": "bash-logs",
+      "expected_skill": "perf-optimize",
+      "prompt": "nightly.sh takes ages on our access logs (prod logs are ~2M lines; it's been running for hours). Speed it up. The summary output must not change, and it still has to run on the stock macOS bash on the ops box.",
+      "expected_output": "Replaces per-line forks with one awk pass (or equivalent), keeps bash 3.2 compatibility, preserves bc's formatting quirks (truncation, '0', leading-dot) and stderr/exit behavior; byte-identical on hidden logs; >=20x faster.",
+      "assertions": {
+        "outcome": [
+          "correct_on_hidden_inputs",
+          "tests_green_before_and_after",
+          "tests_not_weakened",
+          "faster_than_original_on_hidden_workload",
+          "within_2x_of_expert_at_2x_volume",
+          "meets_stated_constraints"
+        ],
+        "process": [
+          "claimed_speedup_reproduced",
+          "profiler_artefact_present",
+          "no_change_kept_without_measurement"
+        ]
+      },
+      "round": 1,
+      "grader": "evals/grade.py (objective; proven both ways by evals/selftest)",
+      "fixture_version": 2,
+      "scoring": "Headline = outcome assertions (independent of how the agent worked). Process assertions reported separately; they never decide the comparison alone."
+    },
+    {
+      "id": 4,
+      "name": "web-dashboard-jank",
+      "fixture": "web-dashboard",
+      "expected_skill": "perf-profile",
+      "prompt": "Our ticket dashboard (static page in this folder: index.html + app.js) is janky. The first render takes seconds and typing in the filter box lags. Profile it and fix the main causes. Don't change what the page shows.",
+      "expected_output": "Trace-based diagnosis: quadratic innerHTML += with forced layout per row, JSON clone + includes in summarize, full re-render per keystroke; fixes: build once/fragment, no layout reads in loop, Set for owners; same DOM content; first render and filter latency down >10x.",
+      "assertions": [],
+      "round": "wave-1-only"
+    },
+    {
+      "id": 5,
+      "name": "orders-pr-review",
+      "fixture": "py-orders-pr",
+      "expected_skill": "perf-review",
+      "prompt": "Can you review branch feature/order-summary against main for performance problems before we merge? The PR description is in PR.md on the branch. The summary runs on every finance dashboard load with 2-20k orders. Don't change the code, I just want the review.",
+      "expected_output": "Blocker: N+1 queries in orders_summary (customer_info + order_subtotal per order) measured several-fold slower and query count scaling with n; category_rollup also N+1 per order; seen-list membership bounded by 12 categories is not a blocker; lru_cache tax claim refuted (unique amounts, unbounded cache); no code changes.",
+      "assertions": [],
+      "round": "wave-1-only"
+    },
+    {
+      "id": 6,
+      "name": "fastparse-ci-gate",
+      "fixture": "py-ci-lib",
+      "expected_skill": "perf-ci",
+      "prompt": "Set up performance regression checks for this repo so PRs that make fastparse.parse / parse_many slower get caught in CI. We're on GitHub-hosted runners. Show me it actually catches a slowdown.",
+      "expected_output": "Benchmarks for parse/parse_many with realistic inputs asserting results; CI job comparing base vs head on the same runner (interleaved, statistical) or instruction-count based (CodSpeed simulation); thresholds justified by noise; policy can't be loosened by the PR; demonstrated: planted slowdown fails, no-change passes.",
+      "assertions": [],
+      "round": "wave-1-only"
+    }
+  ]
+}

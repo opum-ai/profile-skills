@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ticket dashboard</title>
+<style>
+  body { font: 14px system-ui, sans-serif; margin: 16px; }
+  #status { position: sticky; top: 0; background: #fff; padding: 4px 0; }
+  table { border-collapse: collapse; width: 100%; }
+  td, th { border-bottom: 1px solid #ddd; padding: 2px 6px; text-align: left; }
+  .tag { display: inline-block; background: #eef; border-radius: 3px; padding: 0 4px; margin-right: 2px; }
+</style>
+</head>
+<body>
+<h1>Tickets</h1>
+<div id="status"><input id="filter" placeholder="filter by title, owner or tag" size="40"> <span id="summary"></span></div>
+<table><thead><tr><th>#</th><th>Title</th><th>Owner</th><th>Tags</th><th>Points</th></tr></thead><tbody id="rows"></tbody></table>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+__pycache__/
+.claude/handovers/
+.DS_Store
+.pytest_cache/
+*.pyc
+.venv/
+node_modules/
+evals/results/
+evals/workspaces/
+*-workspace/
+.perf/
+evals/.grader-cache/
+evals/.selftest/
+evals/.selftest-ci/
+.coverage

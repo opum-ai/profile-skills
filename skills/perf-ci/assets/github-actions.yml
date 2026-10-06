@@ -1,0 +1,90 @@
+# .github/workflows/perf.yml: same-runner, interleaved base-vs-head performance gate.
+# Both revisions are built and measured in ONE job on ONE runner, interleaved, so runner-to-runner
+# variance cancels. perfkit is vendored at tools/perfkit/ (copy skills/perf-measure/scripts/perfkit.py
+# and skills/perf-measure/scripts/perfkit/ there; or run perf-ci/scripts/vendor_perfkit.sh), so CI does not depend on the plugin.
+name: perf
+on:
+  pull_request:
+    paths-ignore: ["**/*.md", "docs/**"]
+  workflow_dispatch: {}
+
+concurrency:
+  group: perf-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  perf-gate:
+    runs-on: ubuntu-latest            # use a dedicated/self-hosted runner for tight (<5%) thresholds
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash                   # = bash -eo pipefail: without it `gate | tee` would hide a failing gate
+    steps:
+      - uses: actions/checkout@v5
+        with: { path: head, fetch-depth: 0 }
+      - uses: actions/checkout@v5
+        with: { path: base, ref: "${{ github.event.pull_request.base.sha }}" }
+
+      # ---- toolchains (keep whichever apply) ----
+      - uses: astral-sh/setup-uv@v6
+      - uses: actions/setup-node@v5
+        with: { node-version: 24 }
+
+      # ---- build both trees identically (no caches that differ between them) ----
+      - name: build base
+        working-directory: base
+        run: |
+          if [ -f uv.lock ]; then uv sync --frozen; fi
+          if [ -f package-lock.json ]; then npm ci && npm run build --if-present; fi
+      - name: build head
+        working-directory: head
+        run: |
+          if [ -f uv.lock ]; then uv sync --frozen; fi
+          if [ -f package-lock.json ]; then npm ci && npm run build --if-present; fi
+
+      - name: environment
+        run: python3 head/tools/perfkit/perfkit.py doctor | tee perf-env.txt
+
+      # ---- measure: interleaved A/B per [[benchmark]], plus [[metric]] commands in head ----
+      # --policy-ref: the policy comes from the base revision, so this PR cannot loosen its own gate.
+      - name: perf suite
+        working-directory: head
+        run: |
+          python3 tools/perfkit/perfkit.py suite --policy perf-policy.toml \
+            --policy-ref "${{ github.event.pull_request.base.sha }}" \
+            --base ../base --head . --out-dir ../perf-ci
+
+      # optional: browser lab metrics for budgets (needs a served production build)
+      # - run: npx playwright install --with-deps chromium
+      # - run: (cd head && npm run preview -- --port 4173 &) && sleep 5 &&
+      #        node head/tools/perf/browser_trace.mjs http://localhost:4173/ --runs 5 --cpu 4 --out perf-ci/web
+
+      - name: gate
+        working-directory: head
+        run: |
+          python3 tools/perfkit/perfkit.py gate --policy perf-policy.toml \
+            --policy-ref "${{ github.event.pull_request.base.sha }}" \
+            --compare ../perf-ci/comparisons.json --metrics ../perf-ci/metrics.json \
+            --json ../perf-ci/gate.json | tee ../perf-ci/gate.txt
+
+      - name: summary
+        if: always()
+        run: |
+          { echo '### Performance gate'; echo '```'; cat perf-ci/gate.txt 2>/dev/null; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: perf-ci, path: perf-ci/ }
+
+  # ---- alternative / complement: CodSpeed CPU simulation (instruction counts; near-deterministic) ----
+  # Excludes syscalls/I-O; Linux only. Python: pytest-codspeed; JS: @codspeed/vitest-plugin (Vitest <=4) or tinybench-plugin.
+  # codspeed:
+  #   runs-on: ubuntu-latest
+  #   permissions: { contents: read, id-token: write }
+  #   steps:
+  #     - uses: actions/checkout@v5
+  #     - uses: astral-sh/setup-uv@v6
+  #     - run: uv sync --dev
+  #     - uses: CodSpeedHQ/action@v5
+  #       with:
+  #         mode: simulation
+  #         run: uv run pytest benchmarks/ --codspeed

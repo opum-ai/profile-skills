@@ -1,0 +1,60 @@
+# perf-policy.toml: the machine-checked performance rules for this repo.
+# Enforced by: python3 tools/perfkit/perfkit.py gate --policy perf-policy.toml --policy-ref origin/<base> ...
+# Change it only in its own reviewed PR; the gate reads it from the base ref, so a PR cannot loosen its own gate.
+version = 1
+rigor = "R3"                     # project default: R1 Minimal .. R5 High-Assurance (shared with test-policy.toml if present)
+
+[stats]
+min_effect = 0.03                # changes smaller than 3% are "no change" (noise floor of the PR runner; widen on shared runners)
+max_regression = 0.10            # default tolerated slowdown before the gate fails (same-runner, interleaved A/B)
+alpha = 0.05                     # R4+ tiers use 0.01 regardless
+min_runs = 10                    # per arm; R4 tiers need >= 20
+
+# Tiers: first match wins. `benchmarks` globs match [[benchmark]] names; `paths` documents which code they protect.
+[[tier]]
+name = "hot-path"
+benchmarks = ["report-*", "parse-*"]
+paths = ["src/core/**"]
+rigor = "R4"                     # raises min runs to 20, alpha 0.01, and inconclusive results block
+max_regression = 0.05
+
+[[tier]]
+name = "standard"
+benchmarks = ["*"]
+max_regression = 0.10
+
+# Benchmarks run by `perfkit suite --base <base checkout> --head <head checkout>`: each is an interleaved
+# A/B of the same command in both checkouts, with an output-equivalence check.
+[[benchmark]]
+name = "report-big"
+cmd = "python -m app.report fixtures/big.csv"
+runs = 20
+warmup = 2
+# cwd = "."                      # relative to each checkout
+# prepare = "rm -rf .cache"      # run before every measured run (cold-cache claims)
+# same_output = true             # fail if head prints different stdout than base
+# min_effect = 0.03
+
+# Metrics: commands run in the head checkout that print one number (last token of stdout).
+# Deterministic counts make the best budgets: bytes, query counts, exec counts, instruction counts.
+[[metric]]
+name = "bundle.main_kb"
+cmd = "node -e \"console.log((require('fs').statSync('dist/assets/main.js').size/1024).toFixed(1))\""
+
+# Budgets: absolute limits on metrics (from [[metric]], `perfkit suite` medians "bench.<name>.median_s",
+# or any flat JSON passed with --metrics, e.g. browser_trace.mjs metrics.flat.json → web.lcp_ms).
+[[budget]]
+metric = "bundle.main_kb"
+max = 180
+unit = "kB"
+
+[[budget]]
+metric = "web.lcp_ms"
+max = 2500
+unit = "ms"
+required = false                 # missing measurement is a warning, not a failure
+
+[ci]
+pr = "suite: interleaved base-vs-head A/B on the same runner for changed tiers; budgets; gate"
+main = "suite vs previous main commit; record history (optional: CodSpeed / Bencher / github-action-benchmark)"
+nightly = "full suite at R4 run counts + hold-out workloads + browser lab metrics"
