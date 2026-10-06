@@ -1,0 +1,7 @@
+schemaVersion = 1
+name = "profile-skills"
+taskIdPrefix = "PSKI"
+
+[tasks]
+types = ["feature", "bug", "chore", "docs", "enhancement", "spike"]
+priorities = ["low", "medium", "high", "critical"]

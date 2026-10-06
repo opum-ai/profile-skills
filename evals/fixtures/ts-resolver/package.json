@@ -1,0 +1,12 @@
+{
+  "name": "ws-resolve",
+  "version": "1.4.0",
+  "private": true,
+  "type": "module",
+  "description": "Resolve a workspace's packages into a deterministic install order",
+  "scripts": {
+    "resolve": "node src/cli.ts",
+    "test": "node --test tests/*.test.ts"
+  },
+  "engines": { "node": ">=22.18" }
+}
