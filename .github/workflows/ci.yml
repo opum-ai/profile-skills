@@ -1,0 +1,113 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [dev, main]
+
+jobs:
+  tests:
+    name: tests (${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 3.9 is the engine's stated floor (stdlib only); 3.12 is current.
+        python: ['3.9', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      # The engine suite in tests/ (perfkit statistics, loaders, gate). Its own
+      # tests: this repo has no other test surface.
+      - name: pytest
+        run: |
+          python -m pip install --quiet pytest
+          python -m pytest -q tests
+
+  plugin-validate:
+    name: plugin validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      # Unpinned on purpose: the manifest has to validate against the Claude Code
+      # that users install today, not the one that was current when this was written.
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+      - name: claude plugin validate
+        run: claude plugin validate .
+
+  lore-check:
+    name: lore check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      # Both versions come from files that already declare them, so there is no
+      # second pin to drift: lore from the NEWEST generator stamp in the bundle,
+      # quest from the managed block in CLAUDE.md (the opum-marketplace pattern).
+      - name: Resolve declared lore and quest versions
+        id: v
+        run: |
+          set -euo pipefail
+          lore="$(grep -rhoE 'by: lore/[0-9][0-9.]*' docs | sed 's/.*lore\///' | sort -V | tail -1)"
+          quest="$(sed -n 's/.*Quest CLI \([0-9][0-9.]*\).*/\1/p' CLAUDE.md | head -1)"
+          [ -n "$lore" ] && [ -n "$quest" ] || { echo "::error::could not resolve lore ($lore) or quest ($quest) version"; exit 1; }
+          echo "lore=$lore" >> "$GITHUB_OUTPUT"
+          echo "quest=$quest" >> "$GITHUB_OUTPUT"
+      - name: Install lore and quest
+        run: npm install -g "@opum-ai/lore@${{ steps.v.outputs.lore }}" "@opum-ai/quest@${{ steps.v.outputs.quest }}"
+      - name: lore check
+        run: lore check
+      # QUEST_AGENT_PLUGINS=off: the runner has no Claude Code plugins to detect,
+      # and plugin state never changes this command's exit code anyway.
+      - name: Managed instructions are current
+        env:
+          QUEST_AGENT_PLUGINS: 'off'
+        run: |
+          quest agents --check --target claude
+          lore agents --check
+
+  tracker:
+    name: Tracker integrity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      # The quest version is READ from the managed block rather than pinned here
+      # or floated at @latest: a second pin drifts silently, and a float turns an
+      # unrelated upstream publish into a red build on somebody else's PR.
+      - name: Resolve the Quest version CLAUDE.md declares
+        id: quest
+        run: |
+          set -euo pipefail
+          # First match, then quit: no pipe to head, so a second "Quest CLI"
+          # mention can never make sed take SIGPIPE under pipefail and turn
+          # this step's loud failure into a bare exit 141.
+          version="$(sed -n '/Quest CLI [0-9]/{s/.*Quest CLI \([0-9][0-9.]*\).*/\1/p;q;}' CLAUDE.md)"
+          if [ -z "$version" ]; then
+            echo "::error file=CLAUDE.md::No 'Quest CLI <version>' line found in the managed block."
+            exit 1
+          fi
+          echo "Declared Quest version: $version"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+      - run: npm install -g "@opum-ai/quest@${{ steps.quest.outputs.version }}"
+      - name: Tracker reads cleanly
+        # To a file, never the log: the runner parses every stdout line as a
+        # possible workflow command, so record text quoting a CI log (or carrying
+        # ::add-mask:: / ::stop-commands::) would be acted on instead of printed.
+        # The exit code still gates; the count is the positive control.
+        run: |
+          set -euo pipefail
+          quest task list --json > "$RUNNER_TEMP/quest-task-list.json"
+          echo "read $(jq '.data | length' "$RUNNER_TEMP/quest-task-list.json") task record(s)"
+      - name: Managed instructions are current
+        run: quest agents --check --require-installed --target claude
