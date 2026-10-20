@@ -1,0 +1,840 @@
+{
+  "exit_reason": "max_iterations (3)",
+  "original_description": "Make code measurably faster or leaner without breaking it - the recursive loop of baseline \u2192 profile \u2192 one hypothesis \u2192 one change \u2192 re-measure with statistics \u2192 keep only if significant AND tests stay green, otherwise revert and record why, repeat until a stop rule fires - for Python, JavaScript/TypeScript on Node and Bun, browser pages and Bash. Pins behaviour first (tests and coverage of the changed path, kill matrix at higher rigor), records every experiment (kept or rejected) in Quest and lore, hands concurrency and algorithm-equivalence questions to proof-skills, and scales evidence with the R1-R5 rigor profiles. Use this skill whenever the user asks to speed something up, optimize, reduce latency/memory/startup/build time/bundle size/page load, says something is \"slow\", \"takes forever\", \"times out\" or \"uses too much memory\", wants a performance pass, or asks to iteratively/recursively improve performance - even if they never say \"profile\". For measuring or reviewing without changing code use perf-measure; for CI gates use perf-ci.",
+  "best_description": "Use this skill whenever the user wants existing code made faster or leaner and expects it to be changed. That covers \"optimize this\", \"speed it up\", \"make it quicker\", \"it's slow\", \"takes forever\", \"times out\", \"hot loop\", \"bottleneck\", \"too many queries\", and cutting startup, build, latency, memory, bundle or page-load time. It applies to Python, JS/TS (Node, Bun), browser pages, Bash scripts and SQL- or I/O-heavy endpoints. Trigger even for short, casual requests that never mention profiling or benchmarks, and for requests with targets like \"5x faster\" or \"tests must keep passing\". It runs a measured loop: baseline, profile, one change at a time, keep only significant wins with tests green, and log every experiment. Don't use it for measure-only or \"where does the time go\" questions with no edits (use perf-measure), CI performance gates (use perf-ci), performance code review, explaining profiling concepts, or non-performance bugs and features.",
+  "best_score": "5/8",
+  "best_train_score": "7/12",
+  "best_test_score": "5/8",
+  "final_description": "Use this skill when the user wants their code to run faster, finish sooner, or use less memory, and expects you to edit it. Typical asks: \"optimize this\", \"speed this up\", \"make it quicker\", \"it's slow\", \"takes forever\", \"super slow on big inputs\", \"hot loop\", \"bottleneck\", \"too many queries\", \"cut startup/build/page-load time\", \"run a performance pass and keep improving\". Covers Python, JS/TS (Node, Bun), browser pages, Bash scripts, SQL- or I/O-heavy endpoints. Use it for terse, casual requests, for ones naming a file, function or script, and for targets like \"5x faster\" or \"tests must keep passing\", even if profiling is never mentioned. It runs a measured loop: baseline, profile, one change at a time, keep only verified wins with tests green, log each experiment. Don't use it for measure-only or \"where does the time go\" questions with no edits (perf-measure), CI performance gates (perf-ci), performance code review, concept explanations, or unrelated bugs and features.",
+  "iterations_run": 3,
+  "holdout": 0.4,
+  "train_size": 12,
+  "test_size": 8,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Make code measurably faster or leaner without breaking it - the recursive loop of baseline \u2192 profile \u2192 one hypothesis \u2192 one change \u2192 re-measure with statistics \u2192 keep only if significant AND tests stay green, otherwise revert and record why, repeat until a stop rule fires - for Python, JavaScript/TypeScript on Node and Bun, browser pages and Bash. Pins behaviour first (tests and coverage of the changed path, kill matrix at higher rigor), records every experiment (kept or rejected) in Quest and lore, hands concurrency and algorithm-equivalence questions to proof-skills, and scales evidence with the R1-R5 rigor profiles. Use this skill whenever the user asks to speed something up, optimize, reduce latency/memory/startup/build time/bundle size/page load, says something is \"slow\", \"takes forever\", \"times out\" or \"uses too much memory\", wants a performance pass, or asks to iteratively/recursively improve performance - even if they never say \"profile\". For measuring or reviewing without changing code use perf-measure; for CI gates use perf-ci.",
+      "train_passed": 7,
+      "train_failed": 5,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "optimize this typescript hot loop in parser.ts, it's the bottleneck for our bun build step",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "my bash script that renames 50k files takes forever, make it quicker",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "run a performance pass over src/search/ and iteratively improve whatever is hottest, keep going until the gains dry up",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "this sql-heavy endpoint does 300 queries per request, optimize it please",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "this python function process_orders in services/orders.py is super slow on big inputs. speed it up, I need it 5x faster but the tests must keep passing",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "can you reduce the startup time of our node CLI? it takes 1.8s to print --help and that's embarrassing",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "is branch feature/x slower than main? measure it and give me a verdict, no edits",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "fix the failing test in tests/test_cache.py, it started failing after yesterday's merge",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "build a new REST endpoint for exporting invoices as PDF, with auth",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "just tell me where the time goes in this script, don't change any code: ~/proj/etl.py",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "can you review this PR for performance problems and confirm each one with a real measurement? don't fix anything",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "explain what a flame graph is and how to read one",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 4,
+      "test_failed": 4,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "reduce memory use of the image resizer, it blows past 1GB on large uploads and gets OOM killed",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "the nightly build takes 40 minutes, make it faster, I don't care how as long as the output is identical",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "our webpack bundle is 4MB, shrink it as much as you reasonably can without breaking the app",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "the lighthouse LCP on our landing page is 4.2s, get it under 2.5",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "write a formal proof in Lean that this sorting function returns a permutation of its input",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "rename the variable tmp to buffer everywhere in this module and tidy up the imports",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add a CI check that blocks merges when benchmarks get slower, with calibrated tolerances",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add pytest tests for the new CSV importer and check the tests really catch bugs with mutation testing",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 7,
+      "failed": 5,
+      "total": 12,
+      "results": [
+        {
+          "query": "optimize this typescript hot loop in parser.ts, it's the bottleneck for our bun build step",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "my bash script that renames 50k files takes forever, make it quicker",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "run a performance pass over src/search/ and iteratively improve whatever is hottest, keep going until the gains dry up",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "this sql-heavy endpoint does 300 queries per request, optimize it please",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "this python function process_orders in services/orders.py is super slow on big inputs. speed it up, I need it 5x faster but the tests must keep passing",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "can you reduce the startup time of our node CLI? it takes 1.8s to print --help and that's embarrassing",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "is branch feature/x slower than main? measure it and give me a verdict, no edits",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "fix the failing test in tests/test_cache.py, it started failing after yesterday's merge",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "build a new REST endpoint for exporting invoices as PDF, with auth",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "just tell me where the time goes in this script, don't change any code: ~/proj/etl.py",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "can you review this PR for performance problems and confirm each one with a real measurement? don't fix anything",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "explain what a flame graph is and how to read one",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "description": "Use this skill whenever the user wants existing code made faster or leaner and expects it to be changed. That covers \"optimize this\", \"speed it up\", \"make it quicker\", \"it's slow\", \"takes forever\", \"times out\", \"hot loop\", \"bottleneck\", \"too many queries\", and cutting startup, build, latency, memory, bundle or page-load time. It applies to Python, JS/TS (Node, Bun), browser pages, Bash scripts and SQL- or I/O-heavy endpoints. Trigger even for short, casual requests that never mention profiling or benchmarks, and for requests with targets like \"5x faster\" or \"tests must keep passing\". It runs a measured loop: baseline, profile, one change at a time, keep only significant wins with tests green, and log every experiment. Don't use it for measure-only or \"where does the time go\" questions with no edits (use perf-measure), CI performance gates (use perf-ci), performance code review, explaining profiling concepts, or non-performance bugs and features.",
+      "train_passed": 7,
+      "train_failed": 5,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "optimize this typescript hot loop in parser.ts, it's the bottleneck for our bun build step",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "run a performance pass over src/search/ and iteratively improve whatever is hottest, keep going until the gains dry up",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "my bash script that renames 50k files takes forever, make it quicker",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "this python function process_orders in services/orders.py is super slow on big inputs. speed it up, I need it 5x faster but the tests must keep passing",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "this sql-heavy endpoint does 300 queries per request, optimize it please",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "can you reduce the startup time of our node CLI? it takes 1.8s to print --help and that's embarrassing",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "is branch feature/x slower than main? measure it and give me a verdict, no edits",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "fix the failing test in tests/test_cache.py, it started failing after yesterday's merge",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "build a new REST endpoint for exporting invoices as PDF, with auth",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "just tell me where the time goes in this script, don't change any code: ~/proj/etl.py",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "can you review this PR for performance problems and confirm each one with a real measurement? don't fix anything",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "explain what a flame graph is and how to read one",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 5,
+      "test_failed": 3,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "reduce memory use of the image resizer, it blows past 1GB on large uploads and gets OOM killed",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "the nightly build takes 40 minutes, make it faster, I don't care how as long as the output is identical",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our webpack bundle is 4MB, shrink it as much as you reasonably can without breaking the app",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "the lighthouse LCP on our landing page is 4.2s, get it under 2.5",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "write a formal proof in Lean that this sorting function returns a permutation of its input",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "rename the variable tmp to buffer everywhere in this module and tidy up the imports",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add a CI check that blocks merges when benchmarks get slower, with calibrated tolerances",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add pytest tests for the new CSV importer and check the tests really catch bugs with mutation testing",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 7,
+      "failed": 5,
+      "total": 12,
+      "results": [
+        {
+          "query": "optimize this typescript hot loop in parser.ts, it's the bottleneck for our bun build step",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "run a performance pass over src/search/ and iteratively improve whatever is hottest, keep going until the gains dry up",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "my bash script that renames 50k files takes forever, make it quicker",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "this python function process_orders in services/orders.py is super slow on big inputs. speed it up, I need it 5x faster but the tests must keep passing",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "this sql-heavy endpoint does 300 queries per request, optimize it please",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "can you reduce the startup time of our node CLI? it takes 1.8s to print --help and that's embarrassing",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "is branch feature/x slower than main? measure it and give me a verdict, no edits",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "fix the failing test in tests/test_cache.py, it started failing after yesterday's merge",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "build a new REST endpoint for exporting invoices as PDF, with auth",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "just tell me where the time goes in this script, don't change any code: ~/proj/etl.py",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "can you review this PR for performance problems and confirm each one with a real measurement? don't fix anything",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "explain what a flame graph is and how to read one",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 3,
+      "description": "Use this skill when the user wants their code to run faster, finish sooner, or use less memory, and expects you to edit it. Typical asks: \"optimize this\", \"speed this up\", \"make it quicker\", \"it's slow\", \"takes forever\", \"super slow on big inputs\", \"hot loop\", \"bottleneck\", \"too many queries\", \"cut startup/build/page-load time\", \"run a performance pass and keep improving\". Covers Python, JS/TS (Node, Bun), browser pages, Bash scripts, SQL- or I/O-heavy endpoints. Use it for terse, casual requests, for ones naming a file, function or script, and for targets like \"5x faster\" or \"tests must keep passing\", even if profiling is never mentioned. It runs a measured loop: baseline, profile, one change at a time, keep only verified wins with tests green, log each experiment. Don't use it for measure-only or \"where does the time go\" questions with no edits (perf-measure), CI performance gates (perf-ci), performance code review, concept explanations, or unrelated bugs and features.",
+      "train_passed": 8,
+      "train_failed": 4,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "optimize this typescript hot loop in parser.ts, it's the bottleneck for our bun build step",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "run a performance pass over src/search/ and iteratively improve whatever is hottest, keep going until the gains dry up",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "my bash script that renames 50k files takes forever, make it quicker",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "this sql-heavy endpoint does 300 queries per request, optimize it please",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "this python function process_orders in services/orders.py is super slow on big inputs. speed it up, I need it 5x faster but the tests must keep passing",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "can you reduce the startup time of our node CLI? it takes 1.8s to print --help and that's embarrassing",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "is branch feature/x slower than main? measure it and give me a verdict, no edits",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "fix the failing test in tests/test_cache.py, it started failing after yesterday's merge",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "build a new REST endpoint for exporting invoices as PDF, with auth",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "just tell me where the time goes in this script, don't change any code: ~/proj/etl.py",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "can you review this PR for performance problems and confirm each one with a real measurement? don't fix anything",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "explain what a flame graph is and how to read one",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 4,
+      "test_failed": 4,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "reduce memory use of the image resizer, it blows past 1GB on large uploads and gets OOM killed",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "the nightly build takes 40 minutes, make it faster, I don't care how as long as the output is identical",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "our webpack bundle is 4MB, shrink it as much as you reasonably can without breaking the app",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "the lighthouse LCP on our landing page is 4.2s, get it under 2.5",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "write a formal proof in Lean that this sorting function returns a permutation of its input",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "rename the variable tmp to buffer everywhere in this module and tidy up the imports",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add a CI check that blocks merges when benchmarks get slower, with calibrated tolerances",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add pytest tests for the new CSV importer and check the tests really catch bugs with mutation testing",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 8,
+      "failed": 4,
+      "total": 12,
+      "results": [
+        {
+          "query": "optimize this typescript hot loop in parser.ts, it's the bottleneck for our bun build step",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "run a performance pass over src/search/ and iteratively improve whatever is hottest, keep going until the gains dry up",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "my bash script that renames 50k files takes forever, make it quicker",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "this sql-heavy endpoint does 300 queries per request, optimize it please",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "this python function process_orders in services/orders.py is super slow on big inputs. speed it up, I need it 5x faster but the tests must keep passing",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "can you reduce the startup time of our node CLI? it takes 1.8s to print --help and that's embarrassing",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "is branch feature/x slower than main? measure it and give me a verdict, no edits",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "fix the failing test in tests/test_cache.py, it started failing after yesterday's merge",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "build a new REST endpoint for exporting invoices as PDF, with auth",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "just tell me where the time goes in this script, don't change any code: ~/proj/etl.py",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "can you review this PR for performance problems and confirm each one with a real measurement? don't fix anything",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "explain what a flame graph is and how to read one",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

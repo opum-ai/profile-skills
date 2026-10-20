@@ -1,0 +1,840 @@
+{
+  "exit_reason": "max_iterations (3)",
+  "original_description": "Keep performance from regressing as agents ship changes - adopt perf-policy.toml (benchmarks, noise-calibrated tolerances, budgets for latency, startup, memory, bundle size, query/exec counts and Core Web Vitals) on top of test-skills' R1-R5 rigor tiers, and wire a CI gate that builds base and head on the same runner, compares them interleaved and paired with a confidence-interval rule (perfkit suite + gate), reads its policy from the base branch so a PR can't loosen it, and is proven to fail on an injected regression and pass a clean change; CodSpeed, Bencher, github-action-benchmark, Lighthouse CI and size-limit where they fit. Use this skill whenever the user asks to add performance or benchmark checks to CI, catch perf regressions in PRs, set performance budgets or SLOs, track benchmarks over time, fix flaky perf tests, gate bundle size or Lighthouse scores, or add performance rules for agents to a repo. For one-off measurement use perf-measure; for optimizing use perf-optimize.",
+  "best_description": "Keep performance from regressing as agents ship changes - adopt perf-policy.toml (benchmarks, noise-calibrated tolerances, budgets for latency, startup, memory, bundle size, query/exec counts and Core Web Vitals) on top of test-skills' R1-R5 rigor tiers, and wire a CI gate that builds base and head on the same runner, compares them interleaved and paired with a confidence-interval rule (perfkit suite + gate), reads its policy from the base branch so a PR can't loosen it, and is proven to fail on an injected regression and pass a clean change; CodSpeed, Bencher, github-action-benchmark, Lighthouse CI and size-limit where they fit. Use this skill whenever the user asks to add performance or benchmark checks to CI, catch perf regressions in PRs, set performance budgets or SLOs, track benchmarks over time, fix flaky perf tests, gate bundle size or Lighthouse scores, or add performance rules for agents to a repo. For one-off measurement use perf-measure; for optimizing use perf-optimize.",
+  "best_score": "5/8",
+  "best_train_score": "8/12",
+  "best_test_score": "5/8",
+  "final_description": "Use this skill when someone wants performance protected automatically going forward, not measured or improved once. Reach for it whenever the request is about making CI or code review enforce performance: failing or blocking PRs that make the app slower, heavier, or more resource-hungry; setting budgets, thresholds or SLOs (bundle size, startup, latency, memory, Web Vitals); adding Lighthouse CI, size-limit, CodSpeed or Bencher; tracking benchmark results over time with alerts on regressions, on any CI system (GitHub Actions, GitLab CI, etc.); making flaky perf checks reliable; or writing rules so AI agents must show performance didn't regress before merging. Includes calibrating tolerances and proving the gate catches a real regression. Not for one-off profiling or verifying a speedup claim (perf-measure), nor for actually making code faster or smaller (perf-optimize).",
+  "iterations_run": 3,
+  "holdout": 0.4,
+  "train_size": 12,
+  "test_size": 8,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Keep performance from regressing as agents ship changes - adopt perf-policy.toml (benchmarks, noise-calibrated tolerances, budgets for latency, startup, memory, bundle size, query/exec counts and Core Web Vitals) on top of test-skills' R1-R5 rigor tiers, and wire a CI gate that builds base and head on the same runner, compares them interleaved and paired with a confidence-interval rule (perfkit suite + gate), reads its policy from the base branch so a PR can't loosen it, and is proven to fail on an injected regression and pass a clean change; CodSpeed, Bencher, github-action-benchmark, Lighthouse CI and size-limit where they fit. Use this skill whenever the user asks to add performance or benchmark checks to CI, catch perf regressions in PRs, set performance budgets or SLOs, track benchmarks over time, fix flaky perf tests, gate bundle size or Lighthouse scores, or add performance rules for agents to a repo. For one-off measurement use perf-measure; for optimizing use perf-optimize.",
+      "train_passed": 8,
+      "train_failed": 4,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "we keep merging agent-written PRs that quietly slow things down. add rules so agents have to prove performance before merging",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "track our benchmark results over time and alert if latency regresses, we're on GitLab CI",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "build a perf gate that compares base and head on the same runner and only fails when the regression is statistically real",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "add Lighthouse CI to the repo and gate on Core Web Vitals thresholds",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "add performance regression checks to our CI, we use GitHub Actions and a Python service with pytest-benchmark",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I want PRs to fail if they make the app slower or bigger. set up budgets for bundle size and startup time",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "make my data pipeline faster, the transform step takes 20 minutes",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "is my claim that this refactor is 2x faster real? re-measure it independently",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "why is our docker image 2GB? slim it down",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "profile this script and tell me where the time goes",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add mutation testing to the repo and require tests to kill mutants before merging",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add a CODEOWNERS file and branch protection requiring two reviews",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 5,
+      "test_failed": 3,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "set a performance budget on the number of db queries per request and enforce it in tests in CI",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "set up codspeed for this rust crate so we track benchmarks on every PR",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our perf tests in CI are flaky, sometimes a 3% noise blip fails the build. fix that properly",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "wire up size-limit so the PR comment shows bundle size changes and fails over 2%",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "add a release workflow that publishes to npm when I push a tag",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write a TLA+ spec for our job queue and check it with TLC",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "set up GitHub Actions to run eslint and the unit tests on every pull request",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our CI takes 25 minutes, speed up the pipeline by caching dependencies and parallelizing jobs",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 8,
+      "failed": 4,
+      "total": 12,
+      "results": [
+        {
+          "query": "we keep merging agent-written PRs that quietly slow things down. add rules so agents have to prove performance before merging",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "track our benchmark results over time and alert if latency regresses, we're on GitLab CI",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "build a perf gate that compares base and head on the same runner and only fails when the regression is statistically real",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "add Lighthouse CI to the repo and gate on Core Web Vitals thresholds",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "add performance regression checks to our CI, we use GitHub Actions and a Python service with pytest-benchmark",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I want PRs to fail if they make the app slower or bigger. set up budgets for bundle size and startup time",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "make my data pipeline faster, the transform step takes 20 minutes",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "is my claim that this refactor is 2x faster real? re-measure it independently",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "why is our docker image 2GB? slim it down",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "profile this script and tell me where the time goes",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add mutation testing to the repo and require tests to kill mutants before merging",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add a CODEOWNERS file and branch protection requiring two reviews",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "description": "Use this skill when the goal is to stop performance from getting worse over time in a repo: automated, enforced checks that run on every pull request or merge. Typical asks: make PRs fail if they slow the app down or make it bigger; set budgets or thresholds for bundle size, startup time, latency, memory or Core Web Vitals; add Lighthouse CI, size-limit, CodSpeed or Bencher; build a perf gate that compares base and head on the same runner and fails only on statistically real regressions; track benchmarks over time and alert on drift; fix flaky perf checks; or write rules that require agents to prove performance before merging. Covers the policy file, noise-calibrated tolerances, CI wiring and proving the gate fails on a real regression. Not for one-off profiling or measuring (use perf-measure) or for making code faster (use perf-optimize).",
+      "train_passed": 9,
+      "train_failed": 3,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "build a perf gate that compares base and head on the same runner and only fails when the regression is statistically real",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "track our benchmark results over time and alert if latency regresses, we're on GitLab CI",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "we keep merging agent-written PRs that quietly slow things down. add rules so agents have to prove performance before merging",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "add Lighthouse CI to the repo and gate on Core Web Vitals thresholds",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add performance regression checks to our CI, we use GitHub Actions and a Python service with pytest-benchmark",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I want PRs to fail if they make the app slower or bigger. set up budgets for bundle size and startup time",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "make my data pipeline faster, the transform step takes 20 minutes",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "is my claim that this refactor is 2x faster real? re-measure it independently",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "why is our docker image 2GB? slim it down",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "profile this script and tell me where the time goes",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add mutation testing to the repo and require tests to kill mutants before merging",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add a CODEOWNERS file and branch protection requiring two reviews",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 5,
+      "test_failed": 3,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "set a performance budget on the number of db queries per request and enforce it in tests in CI",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "set up codspeed for this rust crate so we track benchmarks on every PR",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "our perf tests in CI are flaky, sometimes a 3% noise blip fails the build. fix that properly",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "wire up size-limit so the PR comment shows bundle size changes and fails over 2%",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "add a release workflow that publishes to npm when I push a tag",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write a TLA+ spec for our job queue and check it with TLC",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "set up GitHub Actions to run eslint and the unit tests on every pull request",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our CI takes 25 minutes, speed up the pipeline by caching dependencies and parallelizing jobs",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 9,
+      "failed": 3,
+      "total": 12,
+      "results": [
+        {
+          "query": "build a perf gate that compares base and head on the same runner and only fails when the regression is statistically real",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "track our benchmark results over time and alert if latency regresses, we're on GitLab CI",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "we keep merging agent-written PRs that quietly slow things down. add rules so agents have to prove performance before merging",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "add Lighthouse CI to the repo and gate on Core Web Vitals thresholds",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add performance regression checks to our CI, we use GitHub Actions and a Python service with pytest-benchmark",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I want PRs to fail if they make the app slower or bigger. set up budgets for bundle size and startup time",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "make my data pipeline faster, the transform step takes 20 minutes",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "is my claim that this refactor is 2x faster real? re-measure it independently",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "why is our docker image 2GB? slim it down",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "profile this script and tell me where the time goes",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add mutation testing to the repo and require tests to kill mutants before merging",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add a CODEOWNERS file and branch protection requiring two reviews",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 3,
+      "description": "Use this skill when someone wants performance protected automatically going forward, not measured or improved once. Reach for it whenever the request is about making CI or code review enforce performance: failing or blocking PRs that make the app slower, heavier, or more resource-hungry; setting budgets, thresholds or SLOs (bundle size, startup, latency, memory, Web Vitals); adding Lighthouse CI, size-limit, CodSpeed or Bencher; tracking benchmark results over time with alerts on regressions, on any CI system (GitHub Actions, GitLab CI, etc.); making flaky perf checks reliable; or writing rules so AI agents must show performance didn't regress before merging. Includes calibrating tolerances and proving the gate catches a real regression. Not for one-off profiling or verifying a speedup claim (perf-measure), nor for actually making code faster or smaller (perf-optimize).",
+      "train_passed": 8,
+      "train_failed": 4,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "we keep merging agent-written PRs that quietly slow things down. add rules so agents have to prove performance before merging",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "build a perf gate that compares base and head on the same runner and only fails when the regression is statistically real",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "track our benchmark results over time and alert if latency regresses, we're on GitLab CI",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "add Lighthouse CI to the repo and gate on Core Web Vitals thresholds",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "add performance regression checks to our CI, we use GitHub Actions and a Python service with pytest-benchmark",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I want PRs to fail if they make the app slower or bigger. set up budgets for bundle size and startup time",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "make my data pipeline faster, the transform step takes 20 minutes",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "is my claim that this refactor is 2x faster real? re-measure it independently",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "why is our docker image 2GB? slim it down",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "profile this script and tell me where the time goes",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add mutation testing to the repo and require tests to kill mutants before merging",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add a CODEOWNERS file and branch protection requiring two reviews",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 5,
+      "test_failed": 3,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "set a performance budget on the number of db queries per request and enforce it in tests in CI",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "set up codspeed for this rust crate so we track benchmarks on every PR",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "our perf tests in CI are flaky, sometimes a 3% noise blip fails the build. fix that properly",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "wire up size-limit so the PR comment shows bundle size changes and fails over 2%",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add a release workflow that publishes to npm when I push a tag",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write a TLA+ spec for our job queue and check it with TLC",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "set up GitHub Actions to run eslint and the unit tests on every pull request",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our CI takes 25 minutes, speed up the pipeline by caching dependencies and parallelizing jobs",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 8,
+      "failed": 4,
+      "total": 12,
+      "results": [
+        {
+          "query": "we keep merging agent-written PRs that quietly slow things down. add rules so agents have to prove performance before merging",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "build a perf gate that compares base and head on the same runner and only fails when the regression is statistically real",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "track our benchmark results over time and alert if latency regresses, we're on GitLab CI",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "add Lighthouse CI to the repo and gate on Core Web Vitals thresholds",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "add performance regression checks to our CI, we use GitHub Actions and a Python service with pytest-benchmark",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "I want PRs to fail if they make the app slower or bigger. set up budgets for bundle size and startup time",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "make my data pipeline faster, the transform step takes 20 minutes",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "is my claim that this refactor is 2x faster real? re-measure it independently",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "why is our docker image 2GB? slim it down",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "profile this script and tell me where the time goes",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add mutation testing to the repo and require tests to kill mutants before merging",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add a CODEOWNERS file and branch protection requiring two reviews",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

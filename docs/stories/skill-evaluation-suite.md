@@ -10,7 +10,7 @@ tasks:
 generated:
   by: lore/0.12.0
   at: 2026-10-05T19:02:15.244Z
-lore_task_status: todo
+lore_task_status: done
 ---
 
 # Skill evaluation suite
@@ -30,7 +30,7 @@ Show what the skills add over a strong baseline, with graders that never trust t
 | Task | Title | Status |
 |---|---|---|
 | [PSKI-8](../../.quest/completed/PSKI-8.json) | Skill evaluation suite | Done |
-| [PSKI-9](../../.quest/tasks/PSKI-9.json) | Optimize skill descriptions for triggering | To Do |
+| [PSKI-9](../../.quest/completed/PSKI-9.json) | Optimize skill descriptions for triggering | Done |
 | [PSKI-13](../../.quest/completed/PSKI-13.json) | Prove graders and the perf-ci gate both ways | Done |
 <!-- lore:tasks:end -->
 

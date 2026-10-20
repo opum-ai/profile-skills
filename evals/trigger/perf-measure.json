@@ -1,0 +1,22 @@
+[
+  {"query": "my fastapi endpoint /reports takes like 4 seconds and I have no idea why, can you figure out where the time is going? repo is in ~/work/billing-api, it's the generate_report function in app/reports.py", "should_trigger": true},
+  {"query": "is the new json parser in this branch actually faster than main? I want numbers I can trust, not a single timeit run", "should_trigger": true},
+  {"query": "someone on the team claims their PR makes startup 30% faster. can you independently re-measure that before I approve it? PR is #412 on our node service", "should_trigger": true},
+  {"query": "attached is a cpuprofile from our bun server, what's the hotspot", "should_trigger": true},
+  {"query": "our Next.js dashboard eats 2GB of memory after an hour. don't change anything yet, just tell me what's holding the memory", "should_trigger": true},
+  {"query": "review this diff for performance regressions: I'm worried the new loop in src/matcher.ts does something quadratic. please confirm by actually running it, not just reading", "should_trigger": true},
+  {"query": "can you make me a flame graph of the python script scripts/etl.py, it's slow on the 5M row file", "should_trigger": true},
+  {"query": "compare pypy vs cpython 3.12 for my simulation, which one is faster on this workload and by how much, with confidence", "should_trigger": true},
+  {"query": "why is our bash deploy script so slow? it takes forever between the build step and the upload, which part dominates?", "should_trigger": true},
+  {"query": "here's a benchmark.json from two runs of criterion output, did we regress or is that noise?", "should_trigger": true},
+  {"query": "make my python data loader 10x faster, the profile shows it's all in parse_row, go ahead and rewrite it and keep only changes that really help", "should_trigger": false},
+  {"query": "set up a GitHub Actions job that fails PRs if the benchmark suite regresses more than 5%, and add a bundle size budget", "should_trigger": false},
+  {"query": "write unit tests for the new rate limiter class with property-based testing and aim for full branch coverage", "should_trigger": false},
+  {"query": "prove with TLA+ that our two-phase commit protocol never lets one node commit while another aborts", "should_trigger": false},
+  {"query": "refactor the order service to remove the circular import between orders.py and billing.py", "should_trigger": false},
+  {"query": "what's the time complexity of this recursive fibonacci with memoization? explain it for my algorithms homework", "should_trigger": false},
+  {"query": "the page looks broken on mobile, the sidebar overlaps the content under 600px, can you fix the CSS", "should_trigger": false},
+  {"query": "add a perf-policy.toml with tolerances and budgets to this repo so agents can't merge slow code", "should_trigger": false},
+  {"query": "our API returns 500 on /users when the email has a plus sign, find the bug and fix it", "should_trigger": false},
+  {"query": "how do I install the lighthouse CLI and what does the performance score in the report mean in general?", "should_trigger": false}
+]

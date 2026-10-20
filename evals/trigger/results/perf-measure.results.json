@@ -1,0 +1,840 @@
+{
+  "exit_reason": "max_iterations (3)",
+  "original_description": "Gather performance evidence without changing the code - profile to find where time or memory goes (Python, Node, Bun, browser, Bash), benchmark and compare two versions/branches/runtimes with interleaved runs and a confidence-interval verdict, verify someone's claimed speedup by independent re-measurement, or review a diff/PR for performance regressions with measured confirmation. Use this skill whenever the user asks to profile, find a bottleneck or hotspot, \"why is this slow\", \"where is the time going\", \"what's using the memory\", wants a flame graph, asks to benchmark or compare implementations, \"is this faster\", \"did this regress\", \"is this speedup real\", \"will this PR be slow\", \"check this for perf issues\", or hands you a .prof, .cpuprofile, speedscope, trace.json or benchmark JSON. To change code to make it faster use perf-optimize; to add CI gates use perf-ci.",
+  "best_description": "Use this skill to get trustworthy performance numbers by actually running and measuring, without editing the code. Covers: finding where CPU time or memory goes (profiling, flame graphs, memory growth or leaks, slow endpoints or scripts; Python, Node, Bun, browser, Bash); benchmarking or comparing two versions, branches, or implementations to decide \"is A faster than B?\" or \"regression or just noise?\" with repeated interleaved runs and confidence intervals; checking whether a claimed speedup is real; and reviewing a diff or PR for performance problems (e.g. quadratic loops) and confirming them by running it. Also use when handed profiler or benchmark output (.prof, .cpuprofile, speedscope, trace.json, criterion or benchmark JSON) to interpret. Trigger on the user's wish for evidence (\"numbers I can trust\", \"just tell me what's holding the memory\", \"confirm by running it\"), even if they never say \"profile\" or \"benchmark\". Do not use to make code faster (perf-optimize) or add CI perf gates (perf-ci).",
+  "best_score": "7/8",
+  "best_train_score": "8/12",
+  "best_test_score": "7/8",
+  "final_description": "Use this skill whenever a performance question needs an answer backed by real measurement rather than guesswork or code reading. That includes: a slow endpoint, function, script or page where the user wants to know why, where the time or memory is going, or what is leaking (profiling, flame graphs, hotspots); \"is A faster than B?\" comparisons of branches, versions or implementations, where timeit-style one-off runs aren't enough; \"did we regress or is it noise?\" questions, including when given benchmark or profiler output (criterion, benchmark.json, .prof, .cpuprofile, speedscope, trace.json) to interpret; checking whether a claimed speedup is real; and reviewing a diff or PR for performance risks such as quadratic loops, then confirming them by running it. Applies to Python, Node, Bun, browser and shell code. It diagnoses and measures only: to actually make code faster use perf-optimize, and for CI perf gates use perf-ci.",
+  "iterations_run": 3,
+  "holdout": 0.4,
+  "train_size": 12,
+  "test_size": 8,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Gather performance evidence without changing the code - profile to find where time or memory goes (Python, Node, Bun, browser, Bash), benchmark and compare two versions/branches/runtimes with interleaved runs and a confidence-interval verdict, verify someone's claimed speedup by independent re-measurement, or review a diff/PR for performance regressions with measured confirmation. Use this skill whenever the user asks to profile, find a bottleneck or hotspot, \"why is this slow\", \"where is the time going\", \"what's using the memory\", wants a flame graph, asks to benchmark or compare implementations, \"is this faster\", \"did this regress\", \"is this speedup real\", \"will this PR be slow\", \"check this for perf issues\", or hands you a .prof, .cpuprofile, speedscope, trace.json or benchmark JSON. To change code to make it faster use perf-optimize; to add CI gates use perf-ci.",
+      "train_passed": 8,
+      "train_failed": 4,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "can you make me a flame graph of the python script scripts/etl.py, it's slow on the 5M row file",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "review this diff for performance regressions: I'm worried the new loop in src/matcher.ts does something quadratic. please confirm by actually running it, not just reading",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "here's a benchmark.json from two runs of criterion output, did we regress or is that noise?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "our Next.js dashboard eats 2GB of memory after an hour. don't change anything yet, just tell me what's holding the memory",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "my fastapi endpoint /reports takes like 4 seconds and I have no idea why, can you figure out where the time is going? repo is in ~/work/billing-api, it's the generate_report function in app/reports.py",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "is the new json parser in this branch actually faster than main? I want numbers I can trust, not a single timeit run",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "our API returns 500 on /users when the email has a plus sign, find the bug and fix it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "set up a GitHub Actions job that fails PRs if the benchmark suite regresses more than 5%, and add a bundle size budget",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add a perf-policy.toml with tolerances and budgets to this repo so agents can't merge slow code",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "make my python data loader 10x faster, the profile shows it's all in parse_row, go ahead and rewrite it and keep only changes that really help",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "the page looks broken on mobile, the sidebar overlaps the content under 600px, can you fix the CSS",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "how do I install the lighthouse CLI and what does the performance score in the report mean in general?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 4,
+      "test_failed": 4,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "compare pypy vs cpython 3.12 for my simulation, which one is faster on this workload and by how much, with confidence",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "attached is a cpuprofile from our bun server, what's the hotspot",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "someone on the team claims their PR makes startup 30% faster. can you independently re-measure that before I approve it? PR is #412 on our node service",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "why is our bash deploy script so slow? it takes forever between the build step and the upload, which part dominates?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "prove with TLA+ that our two-phase commit protocol never lets one node commit while another aborts",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write unit tests for the new rate limiter class with property-based testing and aim for full branch coverage",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "refactor the order service to remove the circular import between orders.py and billing.py",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what's the time complexity of this recursive fibonacci with memoization? explain it for my algorithms homework",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 8,
+      "failed": 4,
+      "total": 12,
+      "results": [
+        {
+          "query": "can you make me a flame graph of the python script scripts/etl.py, it's slow on the 5M row file",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "review this diff for performance regressions: I'm worried the new loop in src/matcher.ts does something quadratic. please confirm by actually running it, not just reading",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "here's a benchmark.json from two runs of criterion output, did we regress or is that noise?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "our Next.js dashboard eats 2GB of memory after an hour. don't change anything yet, just tell me what's holding the memory",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "my fastapi endpoint /reports takes like 4 seconds and I have no idea why, can you figure out where the time is going? repo is in ~/work/billing-api, it's the generate_report function in app/reports.py",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "is the new json parser in this branch actually faster than main? I want numbers I can trust, not a single timeit run",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "our API returns 500 on /users when the email has a plus sign, find the bug and fix it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "set up a GitHub Actions job that fails PRs if the benchmark suite regresses more than 5%, and add a bundle size budget",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add a perf-policy.toml with tolerances and budgets to this repo so agents can't merge slow code",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "make my python data loader 10x faster, the profile shows it's all in parse_row, go ahead and rewrite it and keep only changes that really help",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "the page looks broken on mobile, the sidebar overlaps the content under 600px, can you fix the CSS",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "how do I install the lighthouse CLI and what does the performance score in the report mean in general?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "description": "Use this skill to get trustworthy performance numbers by actually running and measuring, without editing the code. Covers: finding where CPU time or memory goes (profiling, flame graphs, memory growth or leaks, slow endpoints or scripts; Python, Node, Bun, browser, Bash); benchmarking or comparing two versions, branches, or implementations to decide \"is A faster than B?\" or \"regression or just noise?\" with repeated interleaved runs and confidence intervals; checking whether a claimed speedup is real; and reviewing a diff or PR for performance problems (e.g. quadratic loops) and confirming them by running it. Also use when handed profiler or benchmark output (.prof, .cpuprofile, speedscope, trace.json, criterion or benchmark JSON) to interpret. Trigger on the user's wish for evidence (\"numbers I can trust\", \"just tell me what's holding the memory\", \"confirm by running it\"), even if they never say \"profile\" or \"benchmark\". Do not use to make code faster (perf-optimize) or add CI perf gates (perf-ci).",
+      "train_passed": 8,
+      "train_failed": 4,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "here's a benchmark.json from two runs of criterion output, did we regress or is that noise?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "can you make me a flame graph of the python script scripts/etl.py, it's slow on the 5M row file",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "review this diff for performance regressions: I'm worried the new loop in src/matcher.ts does something quadratic. please confirm by actually running it, not just reading",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "our Next.js dashboard eats 2GB of memory after an hour. don't change anything yet, just tell me what's holding the memory",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "my fastapi endpoint /reports takes like 4 seconds and I have no idea why, can you figure out where the time is going? repo is in ~/work/billing-api, it's the generate_report function in app/reports.py",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "is the new json parser in this branch actually faster than main? I want numbers I can trust, not a single timeit run",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "set up a GitHub Actions job that fails PRs if the benchmark suite regresses more than 5%, and add a bundle size budget",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our API returns 500 on /users when the email has a plus sign, find the bug and fix it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add a perf-policy.toml with tolerances and budgets to this repo so agents can't merge slow code",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "make my python data loader 10x faster, the profile shows it's all in parse_row, go ahead and rewrite it and keep only changes that really help",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "the page looks broken on mobile, the sidebar overlaps the content under 600px, can you fix the CSS",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "how do I install the lighthouse CLI and what does the performance score in the report mean in general?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 7,
+      "test_failed": 1,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "attached is a cpuprofile from our bun server, what's the hotspot",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "compare pypy vs cpython 3.12 for my simulation, which one is faster on this workload and by how much, with confidence",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "someone on the team claims their PR makes startup 30% faster. can you independently re-measure that before I approve it? PR is #412 on our node service",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "why is our bash deploy script so slow? it takes forever between the build step and the upload, which part dominates?",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "prove with TLA+ that our two-phase commit protocol never lets one node commit while another aborts",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write unit tests for the new rate limiter class with property-based testing and aim for full branch coverage",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "refactor the order service to remove the circular import between orders.py and billing.py",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what's the time complexity of this recursive fibonacci with memoization? explain it for my algorithms homework",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 8,
+      "failed": 4,
+      "total": 12,
+      "results": [
+        {
+          "query": "here's a benchmark.json from two runs of criterion output, did we regress or is that noise?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "can you make me a flame graph of the python script scripts/etl.py, it's slow on the 5M row file",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "review this diff for performance regressions: I'm worried the new loop in src/matcher.ts does something quadratic. please confirm by actually running it, not just reading",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "our Next.js dashboard eats 2GB of memory after an hour. don't change anything yet, just tell me what's holding the memory",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "my fastapi endpoint /reports takes like 4 seconds and I have no idea why, can you figure out where the time is going? repo is in ~/work/billing-api, it's the generate_report function in app/reports.py",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "is the new json parser in this branch actually faster than main? I want numbers I can trust, not a single timeit run",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "set up a GitHub Actions job that fails PRs if the benchmark suite regresses more than 5%, and add a bundle size budget",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our API returns 500 on /users when the email has a plus sign, find the bug and fix it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add a perf-policy.toml with tolerances and budgets to this repo so agents can't merge slow code",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "make my python data loader 10x faster, the profile shows it's all in parse_row, go ahead and rewrite it and keep only changes that really help",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "the page looks broken on mobile, the sidebar overlaps the content under 600px, can you fix the CSS",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "how do I install the lighthouse CLI and what does the performance score in the report mean in general?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 3,
+      "description": "Use this skill whenever a performance question needs an answer backed by real measurement rather than guesswork or code reading. That includes: a slow endpoint, function, script or page where the user wants to know why, where the time or memory is going, or what is leaking (profiling, flame graphs, hotspots); \"is A faster than B?\" comparisons of branches, versions or implementations, where timeit-style one-off runs aren't enough; \"did we regress or is it noise?\" questions, including when given benchmark or profiler output (criterion, benchmark.json, .prof, .cpuprofile, speedscope, trace.json) to interpret; checking whether a claimed speedup is real; and reviewing a diff or PR for performance risks such as quadratic loops, then confirming them by running it. Applies to Python, Node, Bun, browser and shell code. It diagnoses and measures only: to actually make code faster use perf-optimize, and for CI perf gates use perf-ci.",
+      "train_passed": 7,
+      "train_failed": 5,
+      "train_total": 12,
+      "train_results": [
+        {
+          "query": "review this diff for performance regressions: I'm worried the new loop in src/matcher.ts does something quadratic. please confirm by actually running it, not just reading",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "can you make me a flame graph of the python script scripts/etl.py, it's slow on the 5M row file",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "here's a benchmark.json from two runs of criterion output, did we regress or is that noise?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "my fastapi endpoint /reports takes like 4 seconds and I have no idea why, can you figure out where the time is going? repo is in ~/work/billing-api, it's the generate_report function in app/reports.py",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our Next.js dashboard eats 2GB of memory after an hour. don't change anything yet, just tell me what's holding the memory",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "is the new json parser in this branch actually faster than main? I want numbers I can trust, not a single timeit run",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "our API returns 500 on /users when the email has a plus sign, find the bug and fix it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "set up a GitHub Actions job that fails PRs if the benchmark suite regresses more than 5%, and add a bundle size budget",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add a perf-policy.toml with tolerances and budgets to this repo so agents can't merge slow code",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "the page looks broken on mobile, the sidebar overlaps the content under 600px, can you fix the CSS",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "make my python data loader 10x faster, the profile shows it's all in parse_row, go ahead and rewrite it and keep only changes that really help",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "how do I install the lighthouse CLI and what does the performance score in the report mean in general?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "test_passed": 4,
+      "test_failed": 4,
+      "test_total": 8,
+      "test_results": [
+        {
+          "query": "attached is a cpuprofile from our bun server, what's the hotspot",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "compare pypy vs cpython 3.12 for my simulation, which one is faster on this workload and by how much, with confidence",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "why is our bash deploy script so slow? it takes forever between the build step and the upload, which part dominates?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "someone on the team claims their PR makes startup 30% faster. can you independently re-measure that before I approve it? PR is #412 on our node service",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "prove with TLA+ that our two-phase commit protocol never lets one node commit while another aborts",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "write unit tests for the new rate limiter class with property-based testing and aim for full branch coverage",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "refactor the order service to remove the circular import between orders.py and billing.py",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "what's the time complexity of this recursive fibonacci with memoization? explain it for my algorithms homework",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ],
+      "passed": 7,
+      "failed": 5,
+      "total": 12,
+      "results": [
+        {
+          "query": "review this diff for performance regressions: I'm worried the new loop in src/matcher.ts does something quadratic. please confirm by actually running it, not just reading",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "can you make me a flame graph of the python script scripts/etl.py, it's slow on the 5M row file",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "here's a benchmark.json from two runs of criterion output, did we regress or is that noise?",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "my fastapi endpoint /reports takes like 4 seconds and I have no idea why, can you figure out where the time is going? repo is in ~/work/billing-api, it's the generate_report function in app/reports.py",
+          "should_trigger": true,
+          "trigger_rate": 0.5,
+          "triggers": 1,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "our Next.js dashboard eats 2GB of memory after an hour. don't change anything yet, just tell me what's holding the memory",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "is the new json parser in this branch actually faster than main? I want numbers I can trust, not a single timeit run",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": false
+        },
+        {
+          "query": "our API returns 500 on /users when the email has a plus sign, find the bug and fix it",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "set up a GitHub Actions job that fails PRs if the benchmark suite regresses more than 5%, and add a bundle size budget",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "add a perf-policy.toml with tolerances and budgets to this repo so agents can't merge slow code",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "the page looks broken on mobile, the sidebar overlaps the content under 600px, can you fix the CSS",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "make my python data loader 10x faster, the profile shows it's all in parse_row, go ahead and rewrite it and keep only changes that really help",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        },
+        {
+          "query": "how do I install the lighthouse CLI and what does the performance score in the report mean in general?",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 2,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}
