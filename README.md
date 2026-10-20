@@ -145,6 +145,7 @@ skills/perf-measure/           profile/bench/verify/review + scripts/ (perfkit, 
 skills/perf-ci/                policy, CI templates, vendor script
 tests/                         perfkit's own suite (Python 3.9 and 3.12)
 evals/                         fixtures, objective graders, grader self-tests, results
+evals/trigger/                 per-skill 20-query trigger sets and the description-loop results
 docs/                          OKF bundle: epic, stories, ADRs, research references, perf reports
 ```
 
@@ -162,7 +163,9 @@ Track work with `quest`, and write docs with `lore` (see `CLAUDE.md`).
 ## Known limitations
 
 Tracked in Quest:
-- **Trigger descriptions are not yet optimized** with the skill-creator description loop (PSKI-9).
+- **Trigger descriptions are measured but not changed** (PSKI-9): the skill-creator description loop found no candidate
+  that reliably beat the current descriptions on a held-out set (`evals/trigger/results/README.md`). Recall on
+  should-trigger queries is the weak side.
 - **Round one is small:** 3 fixtures, one run per arm. It showed no outcome advantage over a strong baseline, and the
   skills cost 1.3–2.9× the tokens. Cost reduction is the next iteration.
 - **macOS-specific limits:**

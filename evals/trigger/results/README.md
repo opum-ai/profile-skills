@@ -26,12 +26,17 @@ Train scores (12 queries): perf-ci 8, 9, 8; perf-measure 8, 8, 7; perf-optimize 
 
 ## Reading the numbers
 
-- Recall is the weak side everywhere. In the perf-ci loop precision was 100% and recall 17-25%: headless `claude -p`
+- Recall is the weak side everywhere. Basis, train split only (the loop prints precision and recall for train, not
+  held-out): in the perf-ci loop, run-level (24 runs per iteration) precision was 100% and recall 17-25%; at query
+  level, across all three loops and all iterations, 1-3 of the 6 should-trigger train queries passed and no
+  should-not-trigger train query false-triggered. Headless `claude -p`
   with one command available rarely reaches for a skill unless the task clearly needs one, so a lot of should-trigger
   queries never trigger whatever the description says. Near-miss negatives almost never false-trigger.
 - A held-out set of 8 queries x 2 runs moves by 3 points between iterations of near-identical descriptions
   (perf-measure 7/8 then 4/8). The loop's "best" is chosen by held-out score, which also makes it optimistic.
   The perf-measure iter 2 result is therefore not read as an improvement, and no description was changed. Train
   scores did not move for it (8/12 both).
+- `best_description` and `final_description` in each results file are candidates, NOT adopted: every SKILL.md still
+  carries its `original_description`.
 - Candidates are in each results file (`history[].description`). If one is wanted, re-score it against the baseline
   with more runs per query on the full 20 queries before adopting.
