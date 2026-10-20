@@ -1,0 +1,1879 @@
+{
+ "both_ways": [
+  {
+   "case": "py-report-optimize",
+   "variant": "expert",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert",
+   "assertion": "meets_stated_constraints",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert",
+   "assertion": "profiler_artefact_present",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert-added-tests",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert-added-tests",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert-added-tests",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert-added-tests",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert-added-tests",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert-added-tests",
+   "assertion": "meets_stated_constraints",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert-added-tests",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert-added-tests",
+   "assertion": "profiler_artefact_present",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "expert-added-tests",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "partial-sets-only",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "partial-sets-only",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "partial-sets-only",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "partial-sets-only",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "partial-sets-only",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "partial-sets-only",
+   "assertion": "meets_stated_constraints",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "partial-sets-only",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "partial-sets-only",
+   "assertion": "profiler_artefact_present",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "partial-sets-only",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-semantics",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-semantics",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-semantics",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-semantics",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-semantics",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-semantics",
+   "assertion": "meets_stated_constraints",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-semantics",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-semantics",
+   "assertion": "profiler_artefact_present",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-semantics",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "meets_stated_constraints",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "profiler_artefact_present",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-path",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-path",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-path",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-path",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-path",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-path",
+   "assertion": "meets_stated_constraints",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-path",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-path",
+   "assertion": "profiler_artefact_present",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-path",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-cache",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-cache",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-cache",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-cache",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-cache",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-cache",
+   "assertion": "meets_stated_constraints",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-cache",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-cache",
+   "assertion": "profiler_artefact_present",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-gaming-cache",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-weakened-tests",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-weakened-tests",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-weakened-tests",
+   "assertion": "tests_not_weakened",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-weakened-tests",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-weakened-tests",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-weakened-tests",
+   "assertion": "meets_stated_constraints",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-weakened-tests",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-weakened-tests",
+   "assertion": "profiler_artefact_present",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "py-report-optimize",
+   "variant": "bad-weakened-tests",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "expert",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "expert",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "expert",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "expert",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "expert",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "expert",
+   "assertion": "meets_stated_constraints",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "expert",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "expert",
+   "assertion": "profiler_artefact_present",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "expert",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-bun-claim",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-bun-claim",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-bun-claim",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-bun-claim",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-bun-claim",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-bun-claim",
+   "assertion": "meets_stated_constraints",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-bun-claim",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-bun-claim",
+   "assertion": "profiler_artefact_present",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-bun-claim",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "partial-algorithm-only",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "partial-algorithm-only",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "partial-algorithm-only",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "partial-algorithm-only",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "partial-algorithm-only",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "partial-algorithm-only",
+   "assertion": "meets_stated_constraints",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "partial-algorithm-only",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "partial-algorithm-only",
+   "assertion": "profiler_artefact_present",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "partial-algorithm-only",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-over-limit",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-over-limit",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-over-limit",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-over-limit",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-over-limit",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-over-limit",
+   "assertion": "meets_stated_constraints",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-over-limit",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-over-limit",
+   "assertion": "profiler_artefact_present",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-over-limit",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-semantics",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-semantics",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-semantics",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-semantics",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-semantics",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-semantics",
+   "assertion": "meets_stated_constraints",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-semantics",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-semantics",
+   "assertion": "profiler_artefact_present",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-semantics",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "meets_stated_constraints",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "profiler_artefact_present",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "ts-resolver-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "expert",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "expert",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "expert",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "expert",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "expert",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "expert",
+   "assertion": "meets_stated_constraints",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "expert",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "expert",
+   "assertion": "profiler_artefact_present",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "expert",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "partial-decoy",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "partial-decoy",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "partial-decoy",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "partial-decoy",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "partial-decoy",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "partial-decoy",
+   "assertion": "meets_stated_constraints",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "partial-decoy",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "partial-decoy",
+   "assertion": "profiler_artefact_present",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "partial-decoy",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-locale",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-locale",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-locale",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-locale",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-locale",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-locale",
+   "assertion": "meets_stated_constraints",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-locale",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-locale",
+   "assertion": "profiler_artefact_present",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-locale",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-semantics",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-semantics",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-semantics",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-semantics",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-semantics",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-semantics",
+   "assertion": "meets_stated_constraints",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-semantics",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-semantics",
+   "assertion": "profiler_artefact_present",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-semantics",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "correct_on_hidden_inputs",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "tests_green_before_and_after",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "tests_not_weakened",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "faster_than_original_on_hidden_workload",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "meets_stated_constraints",
+   "want_pass": true,
+   "passed": true,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "claimed_speedup_reproduced",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "profiler_artefact_present",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  },
+  {
+   "case": "bash-logs-optimize",
+   "variant": "bad-unmeasured",
+   "assertion": "no_change_kept_without_measurement",
+   "want_pass": false,
+   "passed": false,
+   "ok": true
+  }
+ ],
+ "mutations": [
+  {
+   "assertion": "correct_on_hidden_inputs",
+   "constant": true,
+   "changed": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-weakened-tests",
+    "ts-resolver-optimize/bad-over-limit",
+    "ts-resolver-optimize/bad-semantics"
+   ],
+   "predicted": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-weakened-tests",
+    "ts-resolver-optimize/bad-over-limit",
+    "ts-resolver-optimize/bad-semantics"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "correct_on_hidden_inputs",
+   "constant": false,
+   "changed": [
+    "bash-logs-optimize/bad-unmeasured",
+    "bash-logs-optimize/expert",
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-gaming-path",
+    "py-report-optimize/bad-unmeasured",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-unmeasured",
+    "ts-resolver-optimize/expert",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "predicted": [
+    "bash-logs-optimize/bad-unmeasured",
+    "bash-logs-optimize/expert",
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-gaming-path",
+    "py-report-optimize/bad-unmeasured",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-unmeasured",
+    "ts-resolver-optimize/expert",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "tests_green_before_and_after",
+   "constant": true,
+   "changed": [
+    "py-report-optimize/bad-weakened-tests"
+   ],
+   "predicted": [
+    "py-report-optimize/bad-weakened-tests"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "tests_green_before_and_after",
+   "constant": false,
+   "changed": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "bash-logs-optimize/bad-unmeasured",
+    "bash-logs-optimize/expert",
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-gaming-path",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-unmeasured",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-over-limit",
+    "ts-resolver-optimize/bad-semantics",
+    "ts-resolver-optimize/bad-unmeasured",
+    "ts-resolver-optimize/expert",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "predicted": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "bash-logs-optimize/bad-unmeasured",
+    "bash-logs-optimize/expert",
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-gaming-path",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-unmeasured",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-over-limit",
+    "ts-resolver-optimize/bad-semantics",
+    "ts-resolver-optimize/bad-unmeasured",
+    "ts-resolver-optimize/expert",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "tests_not_weakened",
+   "constant": true,
+   "changed": [
+    "py-report-optimize/bad-weakened-tests"
+   ],
+   "predicted": [
+    "py-report-optimize/bad-weakened-tests"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "tests_not_weakened",
+   "constant": false,
+   "changed": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "bash-logs-optimize/bad-unmeasured",
+    "bash-logs-optimize/expert",
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-gaming-path",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-unmeasured",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-over-limit",
+    "ts-resolver-optimize/bad-semantics",
+    "ts-resolver-optimize/bad-unmeasured",
+    "ts-resolver-optimize/expert",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "predicted": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "bash-logs-optimize/bad-unmeasured",
+    "bash-logs-optimize/expert",
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-gaming-path",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-unmeasured",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-over-limit",
+    "ts-resolver-optimize/bad-semantics",
+    "ts-resolver-optimize/bad-unmeasured",
+    "ts-resolver-optimize/expert",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "faster_than_original_on_hidden_workload",
+   "constant": true,
+   "changed": [
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-gaming-path",
+    "ts-resolver-optimize/bad-over-limit",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "predicted": [
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-gaming-path",
+    "ts-resolver-optimize/bad-over-limit",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "faster_than_original_on_hidden_workload",
+   "constant": false,
+   "changed": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "bash-logs-optimize/bad-unmeasured",
+    "bash-logs-optimize/expert",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-unmeasured",
+    "py-report-optimize/bad-weakened-tests",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-semantics",
+    "ts-resolver-optimize/bad-unmeasured",
+    "ts-resolver-optimize/expert"
+   ],
+   "predicted": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "bash-logs-optimize/bad-unmeasured",
+    "bash-logs-optimize/expert",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-unmeasured",
+    "py-report-optimize/bad-weakened-tests",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-semantics",
+    "ts-resolver-optimize/bad-unmeasured",
+    "ts-resolver-optimize/expert"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "constant": true,
+   "changed": [
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-gaming-path",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-over-limit",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "predicted": [
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-gaming-path",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-over-limit",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "within_2x_of_expert_at_2x_volume",
+   "constant": false,
+   "changed": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "bash-logs-optimize/bad-unmeasured",
+    "bash-logs-optimize/expert",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-unmeasured",
+    "py-report-optimize/bad-weakened-tests",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-semantics",
+    "ts-resolver-optimize/bad-unmeasured",
+    "ts-resolver-optimize/expert"
+   ],
+   "predicted": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "bash-logs-optimize/bad-unmeasured",
+    "bash-logs-optimize/expert",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-unmeasured",
+    "py-report-optimize/bad-weakened-tests",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-semantics",
+    "ts-resolver-optimize/bad-unmeasured",
+    "ts-resolver-optimize/expert"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "meets_stated_constraints",
+   "constant": true,
+   "changed": [
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-gaming-path",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-over-limit"
+   ],
+   "predicted": [
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-gaming-path",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-over-limit"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "meets_stated_constraints",
+   "constant": false,
+   "changed": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "bash-logs-optimize/bad-unmeasured",
+    "bash-logs-optimize/expert",
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-unmeasured",
+    "py-report-optimize/bad-weakened-tests",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-semantics",
+    "ts-resolver-optimize/bad-unmeasured",
+    "ts-resolver-optimize/expert",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "predicted": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "bash-logs-optimize/bad-unmeasured",
+    "bash-logs-optimize/expert",
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-unmeasured",
+    "py-report-optimize/bad-weakened-tests",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-semantics",
+    "ts-resolver-optimize/bad-unmeasured",
+    "ts-resolver-optimize/expert",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "claimed_speedup_reproduced",
+   "constant": true,
+   "changed": [
+    "bash-logs-optimize/bad-unmeasured",
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-unmeasured",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-over-limit",
+    "ts-resolver-optimize/bad-unmeasured"
+   ],
+   "predicted": [
+    "bash-logs-optimize/bad-unmeasured",
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-unmeasured",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-over-limit",
+    "ts-resolver-optimize/bad-unmeasured"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "claimed_speedup_reproduced",
+   "constant": false,
+   "changed": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "bash-logs-optimize/expert",
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-gaming-path",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-weakened-tests",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-semantics",
+    "ts-resolver-optimize/expert",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "predicted": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "bash-logs-optimize/expert",
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-gaming-path",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-weakened-tests",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-semantics",
+    "ts-resolver-optimize/expert",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "profiler_artefact_present",
+   "constant": true,
+   "changed": [
+    "bash-logs-optimize/bad-unmeasured",
+    "py-report-optimize/bad-unmeasured",
+    "ts-resolver-optimize/bad-over-limit",
+    "ts-resolver-optimize/bad-unmeasured"
+   ],
+   "predicted": [
+    "bash-logs-optimize/bad-unmeasured",
+    "py-report-optimize/bad-unmeasured",
+    "ts-resolver-optimize/bad-over-limit",
+    "ts-resolver-optimize/bad-unmeasured"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "profiler_artefact_present",
+   "constant": false,
+   "changed": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "bash-logs-optimize/expert",
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-gaming-path",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-weakened-tests",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-semantics",
+    "ts-resolver-optimize/expert",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "predicted": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "bash-logs-optimize/expert",
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-gaming-path",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-weakened-tests",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-semantics",
+    "ts-resolver-optimize/expert",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "no_change_kept_without_measurement",
+   "constant": true,
+   "changed": [
+    "bash-logs-optimize/bad-unmeasured",
+    "py-report-optimize/bad-unmeasured",
+    "ts-resolver-optimize/bad-over-limit",
+    "ts-resolver-optimize/bad-unmeasured"
+   ],
+   "predicted": [
+    "bash-logs-optimize/bad-unmeasured",
+    "py-report-optimize/bad-unmeasured",
+    "ts-resolver-optimize/bad-over-limit",
+    "ts-resolver-optimize/bad-unmeasured"
+   ],
+   "ok": true
+  },
+  {
+   "assertion": "no_change_kept_without_measurement",
+   "constant": false,
+   "changed": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "bash-logs-optimize/expert",
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-gaming-path",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-weakened-tests",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-semantics",
+    "ts-resolver-optimize/expert",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "predicted": [
+    "bash-logs-optimize/bad-locale",
+    "bash-logs-optimize/bad-semantics",
+    "bash-logs-optimize/expert",
+    "bash-logs-optimize/partial-decoy",
+    "py-report-optimize/bad-gaming-cache",
+    "py-report-optimize/bad-gaming-path",
+    "py-report-optimize/bad-semantics",
+    "py-report-optimize/bad-weakened-tests",
+    "py-report-optimize/expert",
+    "py-report-optimize/expert-added-tests",
+    "py-report-optimize/partial-sets-only",
+    "ts-resolver-optimize/bad-bun-claim",
+    "ts-resolver-optimize/bad-semantics",
+    "ts-resolver-optimize/expert",
+    "ts-resolver-optimize/partial-algorithm-only"
+   ],
+   "ok": true
+  }
+ ],
+ "ok": true
+}

@@ -1,0 +1,2 @@
+  parse-many-20k: equivalent +1.6% CI[1.0007, 1.0213] tol 5% [R3]
+PASS

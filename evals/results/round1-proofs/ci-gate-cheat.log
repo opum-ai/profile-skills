@@ -1,0 +1,3 @@
+  parse-many-20k: regressed +404.7% CI[4.9969, 5.1486] tol 5% [R3]
+  ✗ parse-many-20k: regressed +404.7% (CI 4.997-5.149) > tolerance 5% [R3]
+FAIL
