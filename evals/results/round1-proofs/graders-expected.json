@@ -1,0 +1,79 @@
+{
+  "py-report-optimize": {
+    "expert": [],
+    "expert-added-tests": [],
+    "partial-sets-only": [
+      "within_2x_of_expert_at_2x_volume",
+      "meets_stated_constraints"
+    ],
+    "bad-semantics": [
+      "correct_on_hidden_inputs"
+    ],
+    "bad-unmeasured": [
+      "claimed_speedup_reproduced",
+      "profiler_artefact_present",
+      "no_change_kept_without_measurement"
+    ],
+    "bad-gaming-path": [
+      "faster_than_original_on_hidden_workload",
+      "within_2x_of_expert_at_2x_volume",
+      "meets_stated_constraints"
+    ],
+    "bad-gaming-cache": [
+      "faster_than_original_on_hidden_workload",
+      "within_2x_of_expert_at_2x_volume",
+      "meets_stated_constraints",
+      "claimed_speedup_reproduced"
+    ],
+    "bad-weakened-tests": [
+      "correct_on_hidden_inputs",
+      "tests_green_before_and_after",
+      "tests_not_weakened"
+    ]
+  },
+  "ts-resolver-optimize": {
+    "expert": [],
+    "bad-bun-claim": [
+      "claimed_speedup_reproduced"
+    ],
+    "partial-algorithm-only": [
+      "faster_than_original_on_hidden_workload",
+      "within_2x_of_expert_at_2x_volume"
+    ],
+    "bad-over-limit": [
+      "correct_on_hidden_inputs",
+      "faster_than_original_on_hidden_workload",
+      "within_2x_of_expert_at_2x_volume",
+      "meets_stated_constraints",
+      "claimed_speedup_reproduced",
+      "profiler_artefact_present",
+      "no_change_kept_without_measurement"
+    ],
+    "bad-semantics": [
+      "correct_on_hidden_inputs"
+    ],
+    "bad-unmeasured": [
+      "claimed_speedup_reproduced",
+      "profiler_artefact_present",
+      "no_change_kept_without_measurement"
+    ]
+  },
+  "bash-logs-optimize": {
+    "expert": [],
+    "partial-decoy": [
+      "faster_than_original_on_hidden_workload",
+      "within_2x_of_expert_at_2x_volume"
+    ],
+    "bad-locale": [
+      "correct_on_hidden_inputs"
+    ],
+    "bad-semantics": [
+      "correct_on_hidden_inputs"
+    ],
+    "bad-unmeasured": [
+      "claimed_speedup_reproduced",
+      "profiler_artefact_present",
+      "no_change_kept_without_measurement"
+    ]
+  }
+}

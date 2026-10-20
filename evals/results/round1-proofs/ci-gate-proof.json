@@ -1,0 +1,29 @@
+{
+ "cases": [
+  {
+   "case": "clean",
+   "want": "PASS",
+   "got": "PASS",
+   "detail": "equivalent -0.4 [0.987, 1.01] 12"
+  },
+  {
+   "case": "regression",
+   "want": "FAIL",
+   "got": "FAIL",
+   "detail": "regressed 405.4 [4.997, 5.093] 12"
+  },
+  {
+   "case": "cheat",
+   "want": "FAIL",
+   "got": "FAIL",
+   "detail": "regressed 404.7 [4.997, 5.149] 12"
+  },
+  {
+   "case": "small",
+   "want": "PASS",
+   "got": "PASS",
+   "detail": "equivalent 1.6 [1.001, 1.021] 12"
+  }
+ ],
+ "proven": true
+}

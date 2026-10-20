@@ -2,7 +2,7 @@
 
 Per skill: a 20-query trigger set (`evals/trigger/<skill>.json`: 10 should-trigger, 10 near-misses drawn from the two
 sibling perf skills and the proof/test territory), split 12 train / 8 held-out (stratified, `--holdout 0.4`), each
-query run 2 times, 3 improvement iterations. Raw output: `<skill>.results.json` in this directory. (Not under `evals/results/`: that directory is gitignored.)
+query run 2 times, 3 improvement iterations. Raw output: `<skill>.results.json` in this directory. (Kept beside the sets they score, not in `evals/results/`, which holds the round-1 proofs.)
 
 ## How it was run
 
