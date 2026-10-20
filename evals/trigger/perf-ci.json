@@ -1,0 +1,22 @@
+[
+  {"query": "add performance regression checks to our CI, we use GitHub Actions and a Python service with pytest-benchmark", "should_trigger": true},
+  {"query": "I want PRs to fail if they make the app slower or bigger. set up budgets for bundle size and startup time", "should_trigger": true},
+  {"query": "our perf tests in CI are flaky, sometimes a 3% noise blip fails the build. fix that properly", "should_trigger": true},
+  {"query": "set up codspeed for this rust crate so we track benchmarks on every PR", "should_trigger": true},
+  {"query": "add Lighthouse CI to the repo and gate on Core Web Vitals thresholds", "should_trigger": true},
+  {"query": "we keep merging agent-written PRs that quietly slow things down. add rules so agents have to prove performance before merging", "should_trigger": true},
+  {"query": "track our benchmark results over time and alert if latency regresses, we're on GitLab CI", "should_trigger": true},
+  {"query": "set a performance budget on the number of db queries per request and enforce it in tests in CI", "should_trigger": true},
+  {"query": "wire up size-limit so the PR comment shows bundle size changes and fails over 2%", "should_trigger": true},
+  {"query": "build a perf gate that compares base and head on the same runner and only fails when the regression is statistically real", "should_trigger": true},
+  {"query": "profile this script and tell me where the time goes", "should_trigger": false},
+  {"query": "make my data pipeline faster, the transform step takes 20 minutes", "should_trigger": false},
+  {"query": "set up GitHub Actions to run eslint and the unit tests on every pull request", "should_trigger": false},
+  {"query": "add a release workflow that publishes to npm when I push a tag", "should_trigger": false},
+  {"query": "our CI takes 25 minutes, speed up the pipeline by caching dependencies and parallelizing jobs", "should_trigger": false},
+  {"query": "write a TLA+ spec for our job queue and check it with TLC", "should_trigger": false},
+  {"query": "add mutation testing to the repo and require tests to kill mutants before merging", "should_trigger": false},
+  {"query": "why is our docker image 2GB? slim it down", "should_trigger": false},
+  {"query": "is my claim that this refactor is 2x faster real? re-measure it independently", "should_trigger": false},
+  {"query": "add a CODEOWNERS file and branch protection requiring two reviews", "should_trigger": false}
+]

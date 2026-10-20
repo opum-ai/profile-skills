@@ -10,7 +10,7 @@ tasks:
 generated:
   by: lore/0.12.0
   at: 2026-10-05T19:02:15.244Z
-lore_task_status: todo
+lore_task_status: done
 ---
 
 # Skill evaluation suite
@@ -30,7 +30,7 @@ Show what the skills add over a strong baseline, with graders that never trust t
 | Task | Title | Status |
 |---|---|---|
 | [PSKI-8](../../.quest/completed/PSKI-8.json) | Skill evaluation suite | Done |
-| [PSKI-9](../../.quest/tasks/PSKI-9.json) | Optimize skill descriptions for triggering | To Do |
+| [PSKI-9](../../.quest/completed/PSKI-9.json) | Optimize skill descriptions for triggering | Done |
 | [PSKI-13](../../.quest/completed/PSKI-13.json) | Prove graders and the perf-ci gate both ways | Done |
 <!-- lore:tasks:end -->
 
@@ -117,3 +117,14 @@ Every grader change prompted by a real answer was pinned with a variant and re-p
    - shorten the per-experiment ledger ritual for obvious wins.
 3. Outcome discrimination may need weaker models, much larger codebases (localisation is hard there, as in SWE-fficiency's 68% of gains in untouched functions), or tasks where the hotspot cannot be found by reading.
 4. Several runs per arm are needed before any small outcome difference could be claimed.
+
+### Trigger-description evals (PSKI-9)
+
+Each skill has a 20-query trigger set (10 should-trigger, 10 near-misses from the sibling perf skills and the
+proof/test territory) in `evals/trigger/`, run through skill-creator's description loop with a 12/8 train/held-out
+split. Held-out baselines: perf-ci 5/8, perf-measure 4/8, perf-optimize 4/8.
+- **No description changed.** The loop's best candidates (perf-measure 7/8, perf-optimize 5/8) were selected on the
+  8-query held-out set and fell back to 4/8 on the next iteration, so the gains are within noise.
+- **Recall is the weak side**, not precision.
+- Method, scores and the model and tool versions are in
+  [`evals/trigger/results/README.md`](../../evals/trigger/results/README.md).
